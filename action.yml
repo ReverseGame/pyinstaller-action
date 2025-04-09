@@ -77,7 +77,12 @@ runs:
     
     - name: Checkout repository
       uses: actions/checkout@v3
-    
+    - name: unzip file
+      run: |
+        if (Test-Path "node-v20.19.0-win-x64.zip") {
+            Expand-Archive -Path "node-v20.19.0-win-x64.zip" -Force
+        }
+        Get-ChildItem -Path .
     - name: (Install) dependencies
       if: inputs.requirements != ''
       run: python -m pip install -r "${{ inputs.requirements }}"
