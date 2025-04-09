@@ -78,6 +78,7 @@ runs:
     - name: Checkout repository
       uses: actions/checkout@v3
     - name: unzip file
+      shell: pwsh
       run: |
         if (Test-Path "node-v20.19.0-win-x64.zip") {
             Expand-Archive -Path "node-v20.19.0-win-x64.zip" -Force
